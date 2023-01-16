@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class MainActivity2 extends AppCompatActivity {
     FloatingActionButton fab;
     Button btnDisplay;
-    EditText etxtName,etxtContact;
+   EditText etxtName,etxtContact;
     ListView listView;
     PhoneBookAdapter phonebookAdapter;
     ArrayList<User> userList= new ArrayList<User>();
@@ -26,23 +26,24 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        fab=findViewById(R.id.fab);
-        etxtName=findViewById(R.id.etxtName);
-        etxtContact=findViewById(R.id.etxtContact);
-        listView=findViewById(R.id.list_item);
-        btnDisplay=findViewById(R.id.btnDisplay);
-        DBHelper dbHelper=new DBHelper(MainActivity2.this);
-        Cursor cursor=dbHelper.viewData();
-        while (cursor.moveToNext())
-        {
+        fab = findViewById(R.id.fab);
+        etxtName = findViewById(R.id.etxtName);
+        etxtContact = findViewById(R.id.etxtContact);
+        listView = findViewById(R.id.list_item);
 
-            int id=cursor.getInt(0);
-            String name=cursor.getString(1);
-            String contact=cursor.getString(2);
-            User user=new User(id,name,contact);
-            userList.add(user);
-        }
-        phonebookAdapter=new PhoneBookAdapter(this,userList);
+
+            DBHelper dbHelper = new DBHelper(MainActivity2.this);
+            Cursor cursor = dbHelper.viewData();
+            while (cursor.moveToNext()) {
+
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String contact = cursor.getString(2);
+                User user = new User(id, name, contact);
+                userList.add(user);
+            }
+
+        phonebookAdapter = new PhoneBookAdapter(this, userList);
         listView.setAdapter(phonebookAdapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,5 +54,11 @@ public class MainActivity2 extends AppCompatActivity {
                 String str2=etxtContact.getText().toString();
 
             }
-        });}
+        });
     }
+
+
+
+
+
+}
