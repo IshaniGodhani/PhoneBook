@@ -50,8 +50,11 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent=new Intent(MainActivity2.this,MainActivity.class);
-                String str1=etxtName.getText().toString();
-                String str2=etxtContact.getText().toString();
+
+//                intent.putExtra("name",str1);
+//                intent.putExtra("contact",str2);
+
+                startActivity(intent);
 
             }
         });

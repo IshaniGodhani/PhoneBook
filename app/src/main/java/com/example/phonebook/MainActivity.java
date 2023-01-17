@@ -30,34 +30,44 @@ public class MainActivity extends AppCompatActivity {
             etxtName.setText("" + name);
             etxtContact.setText("" + contact);
 
-
-            btnSubmit.setOnClickListener(new View.OnClickListener() {
+            findViewById(R.id.btnDisplay).setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    String name = etxtName.getText().toString();
-                    String contact = etxtContact.getText().toString();
-                    DBHelper dbHelper=new DBHelper(MainActivity.this);
-                    if(getIntent().getExtras()==null)
+                public void onClick(View v)
+                {
+                    if(getIntent().getExtras()!=null)
                     {
-                        dbHelper.insertData(name,contact);
-                        Intent intent=new Intent(MainActivity.this,MainActivity2.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else {
-
-
                         String txt1 = etxtName.getText().toString();
                         String txt2 = etxtContact.getText().toString();
+                        DBHelper dbHelper=new DBHelper(MainActivity.this);
                         dbHelper.updateData(id, txt1, txt2);
                         Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                         startActivity(intent);
                         finish();
                     }
 
+                    Intent intent=new Intent(MainActivity.this,MainActivity2.class);
+                    startActivity(intent);
+
                 }
             });
 
         }
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = etxtName.getText().toString();
+                String contact = etxtContact.getText().toString();
+                DBHelper dbHelper=new DBHelper(MainActivity.this);
+                if(getIntent().getExtras()==null)
+                {
+                    dbHelper.insertData(name,contact);
+                    Intent intent=new Intent(MainActivity.this,MainActivity2.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        });
+
     }
 }

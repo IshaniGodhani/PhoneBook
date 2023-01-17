@@ -27,6 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     public void insertData(String name, String contact)
     {
+        //System.out.println("name="+name+"contact="+contact);
         String query="insert into PhoneBook (name,contact) values('"+name+"','"+contact+"')";
         SQLiteDatabase database;
         database=getWritableDatabase();
@@ -43,7 +44,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void deleteData(int Id)
     {
-        System.out.println("db helper method called id="+Id);
+
         String query="delete from PhoneBook where id='"+Id+"'";
         SQLiteDatabase sqLiteDatabase=getWritableDatabase();
         sqLiteDatabase.execSQL(query);
@@ -52,6 +53,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void updateData(int id, String name, String contact)
     {
 
+        System.out.println("id="+id+"name="+name+"contact="+contact);
         String query="Update PhoneBook set name='"+name+"',contact='"+contact+"' where id='"+id+"'";
         SQLiteDatabase sqLiteDatabase=getWritableDatabase();
         sqLiteDatabase.execSQL(query);
