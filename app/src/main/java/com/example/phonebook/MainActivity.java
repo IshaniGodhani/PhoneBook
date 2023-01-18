@@ -61,6 +61,18 @@ public class MainActivity extends AppCompatActivity {
                 if(getIntent().getExtras()==null)
                 {
                     dbHelper.insertData(name,contact);
+                    if(name==null && contact==null)
+                    {
+
+                    }
+                    else if(name!=null && contact==null)
+                    {
+
+                    }
+                    else if(name==null && contact!=null)
+                    {
+
+                    }
                     Intent intent=new Intent(MainActivity.this,MainActivity2.class);
                     startActivity(intent);
                     finish();
